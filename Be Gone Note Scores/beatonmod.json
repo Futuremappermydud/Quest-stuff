@@ -4,7 +4,7 @@
   "author": "Futuremappermydud",
   "coverImageFilename": "cover.png",
   "description": [
-    "This innovative hook mod removes that annoying text when you hit a block!"],
+    "This innovative hook mod removes that annoying text down below \/ when you hit a block!"],
   "category": "Gameplay",
   "gameVersion": "1.4.3",
   "version": "0.0.1",
@@ -16,10 +16,10 @@
     {
       "Type": "HookMod",
       "InstallAction": {
-        "InstallLibraryFile": "Begonescores.so"
+        "InstallLibraryFile": "Xscore.so"
       },
       "UninstallAction": {
-        "RemoveLibraryFile": "Begonescores.so"
+        "RemoveLibraryFile": "Xscore.so"
       }
     }
   ]

@@ -20,8 +20,8 @@ TARGET_ARCH_ABI := armeabi-v7a
 
 include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
-LOCAL_CFLAGS    := -DMOD_ID='"ScoreRemover"' -DVERSION='"0.0.1"'
-LOCAL_MODULE    := ScoreRemover
+LOCAL_CFLAGS    := -DMOD_ID='"Xscore"' -DVERSION='"0.0.1"'
+LOCAL_MODULE    := Xscore
 LOCAL_CPPFLAGS := -std=c++2a
 LOCAL_SRC_FILES := main.cpp ../beatsaber-hook/shared/utils/utils.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c
 include $(BUILD_SHARED_LIBRARY)
