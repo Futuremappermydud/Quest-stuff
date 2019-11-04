@@ -1,0 +1,26 @@
+{
+  "id": "nonotescores",
+  "name": "Be Gone Scores™",
+  "author": "Futuremappermydud",
+  "coverImageFilename": "cover.png",
+  "description": [
+    "This innovative hook mod removes that annoying text when you hit a block!"],
+  "category": "Gameplay",
+  "gameVersion": "1.4.3",
+  "version": "0.0.1",
+  "links": {
+    "project-home": "https://github.com/Futuremappermydud/Quest-stuff"
+  },
+  "platform": "Quest",
+  "components": [
+    {
+      "Type": "HookMod",
+      "InstallAction": {
+        "InstallLibraryFile": "Begonescores.so"
+      },
+      "UninstallAction": {
+        "RemoveLibraryFile": "Begonescores.so"
+      }
+    }
+  ]
+}

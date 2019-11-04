@@ -1,0 +1,28 @@
+{
+  "id": "TemplateMod",
+  "name": "Template Mod",
+  "author": "ORIGINAL AUTHOR NAME HERE",
+  "coverImageFilename": "template_cover.png",
+  "porter": "PORTER TO QUEST NAME OR DO NOT INCLUDE KEY",
+  "description": [
+    "TEMPLATE MOD!"
+  ],
+  "category": "Gameplay",
+  "gameVersion": "1.1.0",
+  "version": "0.0.0.1",
+  "links": {
+    "project-home": "https://github.com/MY/REPO"
+  },
+  "platform": "Quest",
+  "components": [
+    {
+      "Type": "HookMod",
+      "InstallAction": {
+        "InstallLibraryFile": "libtemplate.so"
+      },
+      "UninstallAction": {
+        "RemoveLibraryFile": "libtemplate.so"
+      }
+    }
+  ]
+}
