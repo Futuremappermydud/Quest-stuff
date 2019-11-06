@@ -1,0 +1,17 @@
+.vscode/*
+modloader/.vscode/*
+mod-sample/.vscode/*
+modloader/libs/*
+modloader/obj/*
+
+mod-sample/libs/*
+mod-sample/obj/*
+
+customcolors/libs/*
+customcolors/obj/*
+
+shared/libil2cpp/
+
+*.pyc
+
+shared/dumps.json
