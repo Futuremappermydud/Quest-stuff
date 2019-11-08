@@ -18,9 +18,18 @@
 
 using namespace std;
 
-#define FlyingScoreEffect_InitAndPresent 0xA49BFC
+MAKE_HOOK_OFFSETLESS(FlyingObjectInit, void, void *self, void *NoteCutInfo ,int multiplier , float duration, Vector3 targetPos, Color Color) {
+{
+    duration = false ;
+    return FlyingObjectInit(self, NoteCutInfo, multiplier, duration, Vector3 targetPos, Color Color;
+}
 
-MAKE_HOOK(FlyingObjectInit, FlyingObjectInit_offset, void, void *self, void *NoteCutInfo ,int multiplier , float duration, Vector3 targetPos, Color Color) {
-    log(DEBUG, "Called FlyingScoreEffect_InitAndPresent!);
-    return FlyingScoreEffect_InitAndPresent(self);
-}   
+__attribute__((constructor)) void lib_main()
+{
+    #ifdef __aarch64__
+    log(INFO, "Is 64 bit!");
+    #endif
+    log(DEBUG, "Installing Begonescores");
+    INSTALL_HOOK(FlyingObjectInit);
+    log(DEBUG, "Successfully installed Begonescores!");
+}
