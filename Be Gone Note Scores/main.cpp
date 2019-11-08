@@ -10,7 +10,7 @@
 #include <sys/sendfile.h>
 #include <sys/stat.h>
 
-#define MOD_ID "Begonescores"
+#define MOD_ID "Xscore"
 #define VERSION "0.0.1"
 
 #include "../beatsaber-hook/shared/inline-hook/inlineHook.h"
@@ -20,7 +20,7 @@ using namespace std;
 
 MAKE_HOOK_OFFSETLESS(FlyingObjectInit, void, void *self, void *NoteCutInfo ,int multiplier , float duration, Vector3 targetPos, Color Color) {
 {
-    duration = false ;
+    duration = 0 ;
     return FlyingObjectInit(self, NoteCutInfo, multiplier, duration, Vector3 targetPos, Color Color;
 }
 
