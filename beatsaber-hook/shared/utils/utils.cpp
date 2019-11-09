@@ -3,6 +3,7 @@
 #include <jni.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include "utils.h"
 #include <android/log.h>
 #include <string.h>
@@ -14,14 +15,15 @@
 #include <fstream>
 
 using namespace std;
+using namespace rapidjson;
 
-long long baseAddr(const char *soname)  // credits to https://github.com/ikoz/AndroidSubstrate_hookingC_examples/blob/master/nativeHook3/jni/nativeHook3.cy.cpp
+long baseAddr(const char *soname)  // credits to https://github.com/ikoz/AndroidSubstrate_hookingC_examples/blob/master/nativeHook3/jni/nativeHook3.cy.cpp
 {
     void *imagehandle = dlopen(soname, RTLD_LOCAL | RTLD_LAZY);
     if (soname == NULL)
-        return (long long)NULL;
+        return (long)NULL;
     if (imagehandle == NULL){
-        return (long long)NULL;
+        return (long)NULL;
     }
     uintptr_t * irc = NULL;
     FILE *f = NULL;
@@ -30,7 +32,7 @@ long long baseAddr(const char *soname)  // credits to https://github.com/ikoz/An
     char *tok = NULL;
     char * baseAddr = NULL;
     if ((f = fopen("/proc/self/maps", "r")) == NULL)
-        return (long long)NULL;
+        return (long)NULL;
     while (fgets(line, 199, f) != NULL)
     {
         tok = strtok_r(line, "-", &state);
@@ -55,61 +57,26 @@ long long baseAddr(const char *soname)  // credits to https://github.com/ikoz/An
                 if (toklen > 0) {
                     if (toklen >= solen && strcmp(tok + (toklen - solen), soname) == 0) {
                         fclose(f);
-                        return (long long)strtoll(baseAddr,NULL,16);
+                        return (long)strtoll(baseAddr,NULL,16);
                     }
                 }
             }
         }
     }
     fclose(f);
-    return (long long)NULL;
+    return (long)NULL;
 }
 
-long long location; // save lib.so base address so we do not have to recalculate every time causing lag.
+long location; // save lib.so base address so we do not have to recalculate every time causing lag.
 
-long long getRealOffset(void* offset) // calculate dump.cs address + lib.so base address.
+long getRealOffset(long offset) // calculate dump.cs address + lib.so base address.
 {
     if (location == 0)
     {
         //arm
-        location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm64/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
+        location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
     }
-    return location + (long long)offset;
-}
-
-long long FindPattern(long long dwAddress, long long dwLen, char* pattern) {
-
-	#define in_range(x, a, b) (x >= a && x <= b)
-	#define get_bits(x) (in_range((x & (~0x20)), 'A', 'F') ? ((x & (~0x20)) - 'A' + 0xA): (in_range(x, '0', '9') ? x - '0': 0))
-	#define get_byte(x) (get_bits(x[0]) << 4 | get_bits(x[1]))
-
-	long long match = 0;
-
-	const char* current = pattern;
-
-	for (long long pCur = dwAddress; pCur < dwAddress + dwLen; pCur++) {
-	
-		if (!*current)
-			return match;
-
-		if (*(char*)current == ('\?') || *(char *)pCur == get_byte(current)) {
-			if (!match)
-				match = pCur;
-
-			if (!current[2])
-				return match;
-
-			if (*(short*)current == ('\?\?') || *(char *)current != ('\?'))
-				current += 3;
-			else
-				current += 2;
-		}
-		else {
-			current = pattern;
-			match = 0;
-		}
-	}
-	return 0;
+    return location + offset;
 }
 
 // BEAT SABER SPECIFIC
@@ -117,47 +84,36 @@ long long FindPattern(long long dwAddress, long long dwLen, char* pattern) {
 // il2cpp_string_new, used to find string construction offset: 0x2DD144
 // il2cpp_string_new immediate call offset: 0x30A1C8
 // Creation of string method(char* chars, size_t length): 0x30A1E8
+static const long NEW_STRING_OFFSET = 0x30A1E8;
 
-void setcsstr(Il2CppString* in, u16string_view str) {
-    in->length = str.length();
-    for(int i = 0; i < in->length; i++) {
-        // Can assume that each char is only a single char (a single word --> double word)
-        in->chars[i] = str[i];
-    }
+cs_string* createcsstr(char* characters, size_t length) {
+    auto create_str = reinterpret_cast<function_ptr_t<cs_string*, char*, size_t>>(getRealOffset(NEW_STRING_OFFSET));
+    return create_str(characters, length);
 }
 
-// Inspired by DaNike
-string to_utf8(u16string_view view) {
-    char dat[view.length() + 1];
-    transform(view.data(), view.data() + view.size(), dat, [](auto utf16_char) {
-        return static_cast<char>(utf16_char);
-    });
-    dat[view.length()] = '\0';
-    return {dat};
-}
-
-u16string to_utf16(string_view view) {
-    char16_t dat[view.length() + 1];
-    transform(view.data(), view.data() + view.size(), dat, [](auto standardChar) {
-        return static_cast<char16_t>(standardChar);
-    });
-    dat[view.length()] = '\0';
-    return {dat};
-}
-
-u16string_view csstrtostr(Il2CppString* in)
+void csstrtowstr(cs_string* in, unsigned short* out)
 {
-    return {in->chars, static_cast<uint32_t>(in->length)};
+    for(int i = 0; i < in->len; i++) {
+        out[i] = in->str[i];
+    }
 }
 
-// Thanks DaNike!
-void dump(int before, int after, void* ptr) {
-    log(DEBUG, "Dumping Immediate Pointer: %p: %08x", ptr, *reinterpret_cast<int*>(ptr));
-    auto begin = static_cast<int*>(ptr) - before;
-    auto end = static_cast<int*>(ptr) + after;
-    for (auto cur = begin; cur != end; ++cur) {
-        log(DEBUG, "%p: %08x", cur, *cur);
+void setcsstr(cs_string* in, char* value, size_t length) {
+    unsigned int l = (unsigned int)length;
+    in->len = l;
+    for(int i = 0; i < l; i++) {
+        // Can assume that each char is only a single char (a single word --> double word)
+        in->str[i] = (unsigned short)value[i];
     }
+}
+
+void csstrtostr(cs_string* in, char* out)
+{
+    for(int i = 0; i < in->len; i++) {
+        // Can assume that each short can just be a literal char
+        out[i*2] = in->str[i];
+    }
+    out[in->len] = '\x0';
 }
 
 // BEAT SABER SETTINGS
@@ -201,17 +157,8 @@ int writefile(const char* filename, const char* text) {
     }
     return WRITE_ERROR_COULD_NOT_MAKE_FILE;
 }
-/*
-void* loadfromasset(const char* assetFilePath, const char* assetName) {
-    // TODO IMPLEMENT
-    // Create C# string
-    auto str = il2cpp_utils::createcsstr(assetFilePath);
-    void* fromFileParams[] = {str};
-    // auto asyncBundle = il2cpp_functions::runtime_invoke()
-    return nullptr;
-}
-*/
-bool parsejson(ConfigDocument& doc, string_view js) {
+
+bool parsejson(rapidjson::Document& doc, string_view js) {
     char temp[js.length()];
     memcpy(temp, js.data(), js.length());
     
@@ -221,11 +168,62 @@ bool parsejson(ConfigDocument& doc, string_view js) {
     return true;
 }
 
-string getconfigpath() {
+bool parsejsonfile(rapidjson::Document& doc, string filename) {
+    if (!fileexists(filename.c_str())) {
+        return {};
+    }
+    // FILE* fp = fopen(filename.c_str(), "r");
+
+    std::ifstream is;
+    is.open(filename.c_str());
+
+    IStreamWrapper wrapper {is};
+    
+    if (doc.ParseStream(wrapper).HasParseError()) {
+        return false;
+    }
+    return true;
+}
+
+// CONFIG
+
+Configuration::Config::Config() : document{rapidjson::Type::kObjectType} {}
+
+Configuration::Config config_object;
+bool readJson = false;
+
+// Loads the config for the given MOD_ID, if it doesn't exist, will leave it as an empty object.
+Configuration::Config Configuration::Config::Load() {
+    config_object = {};
+    if (!direxists(CONFIG_PATH)) {
+        mkdir(CONFIG_PATH, 0700);
+    }
     string filename;
     filename = filename.append(CONFIG_PATH);
     filename = filename.append(MOD_ID);
     filename = filename.append(".json");
-    return filename;
+
+    if (!fileexists(filename.c_str())) {
+        writefile(filename.c_str(), "{}");
+    }
+    parsejsonfile(config_object.document, filename);
+    if (!config_object.document.IsObject()) {
+        config_object.document.SetObject();
+    }
+    readJson = true;
 }
 
+void Configuration::Config::Write() {
+    if (!direxists(CONFIG_PATH)) {
+        mkdir(CONFIG_PATH, 0700);
+    }
+    string filename;
+    filename = filename.append(CONFIG_PATH);
+    filename = filename.append(MOD_ID);
+    filename = filename.append(".json");
+
+    StringBuffer buf;
+    PrettyWriter<StringBuffer> writer(buf);
+    config_object.document.Accept(writer);
+    writefile(filename.c_str(), buf.GetString());
+}
