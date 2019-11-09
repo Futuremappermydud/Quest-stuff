@@ -28,8 +28,8 @@ MAKE_HOOK_OFFSETLESS(init_hook, void, const char* domain_name) {
     init_hook(domain_name);
     log(DEBUG, "Installing Begonescores");
     auto klass = il2cpp_utils::GetClassFromName("", "FlyingObjectEffect");
-    auto method = il2cpp_utils::GetMethod(klass, "InitAndPresent");
-    INSTALL_HOOK(FlyingObjectEffect, method);
+    auto il2cpp_utils::GetMethod(klass, "InitAndPresent", 5);
+    INSTALL_HOOK_OFFSETLESS(FlyingObjectEffect, "InitAndPresent");
     log(DEBUG, "Successfully installed Begonescores!");
 }
 

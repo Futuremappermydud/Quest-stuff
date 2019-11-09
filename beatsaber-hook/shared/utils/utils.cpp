@@ -69,12 +69,12 @@ long baseAddr(const char *soname)  // credits to https://github.com/ikoz/Android
 
 long location; // save lib.so base address so we do not have to recalculate every time causing lag.
 
-long getRealOffset(long offset) // calculate dump.cs address + lib.so base address.
+long long getRealOffset(long long offset) // calculate dump.cs address + lib.so base address.
 {
     if (location == 0)
     {
         //arm
-        location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
+        location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm64/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
     }
     return location + offset;
 }
@@ -84,36 +84,47 @@ long getRealOffset(long offset) // calculate dump.cs address + lib.so base addre
 // il2cpp_string_new, used to find string construction offset: 0x2DD144
 // il2cpp_string_new immediate call offset: 0x30A1C8
 // Creation of string method(char* chars, size_t length): 0x30A1E8
-static const long NEW_STRING_OFFSET = 0x30A1E8;
 
-cs_string* createcsstr(char* characters, size_t length) {
-    auto create_str = reinterpret_cast<function_ptr_t<cs_string*, char*, size_t>>(getRealOffset(NEW_STRING_OFFSET));
-    return create_str(characters, length);
-}
-
-void csstrtowstr(cs_string* in, unsigned short* out)
-{
-    for(int i = 0; i < in->len; i++) {
-        out[i] = in->str[i];
-    }
-}
-
-void setcsstr(cs_string* in, char* value, size_t length) {
-    unsigned int l = (unsigned int)length;
-    in->len = l;
-    for(int i = 0; i < l; i++) {
+void setcsstr(Il2CppString* in, u16string_view str) {
+    in->length = str.length();
+    for(int i = 0; i < in->length; i++) {
         // Can assume that each char is only a single char (a single word --> double word)
-        in->str[i] = (unsigned short)value[i];
+        in->chars[i] = str[i];
     }
 }
 
-void csstrtostr(cs_string* in, char* out)
+// Inspired by DaNike
+string to_utf8(u16string_view view) {
+    char dat[view.length() + 1];
+    transform(view.data(), view.data() + view.size(), dat, [](auto utf16_char) {
+        return static_cast<char>(utf16_char);
+    });
+    dat[view.length()] = '\0';
+    return {dat};
+}
+
+u16string to_utf16(string_view view) {
+    char16_t dat[view.length() + 1];
+    transform(view.data(), view.data() + view.size(), dat, [](auto standardChar) {
+        return static_cast<char16_t>(standardChar);
+    });
+    dat[view.length()] = '\0';
+    return {dat};
+}
+
+u16string_view csstrtostr(Il2CppString* in)
 {
-    for(int i = 0; i < in->len; i++) {
-        // Can assume that each short can just be a literal char
-        out[i*2] = in->str[i];
+    return {in->chars, static_cast<uint32_t>(in->length)};
+}
+
+// Thanks DaNike!
+void dump(int before, int after, void* ptr) {
+    log(DEBUG, "Dumping Immediate Pointer: %p: %08x", ptr, *reinterpret_cast<int*>(ptr));
+    auto begin = static_cast<int*>(ptr) - before;
+    auto end = static_cast<int*>(ptr) + after;
+    for (auto cur = begin; cur != end; ++cur) {
+        log(DEBUG, "%p: %08x", cur, *cur);
     }
-    out[in->len] = '\x0';
 }
 
 // BEAT SABER SETTINGS
@@ -158,7 +169,16 @@ int writefile(const char* filename, const char* text) {
     return WRITE_ERROR_COULD_NOT_MAKE_FILE;
 }
 
-bool parsejson(rapidjson::Document& doc, string_view js) {
+void* loadfromasset(const char* assetFilePath, const char* assetName) {
+    // TODO IMPLEMENT
+    // Create C# string
+    auto str = il2cpp_utils::createcsstr(assetFilePath);
+    void* fromFileParams[] = {str};
+    // auto asyncBundle = il2cpp_functions::runtime_invoke()
+    return nullptr;
+}
+
+bool parsejson(ConfigDocument& doc, string_view js) {
     char temp[js.length()];
     memcpy(temp, js.data(), js.length());
     
@@ -168,7 +188,7 @@ bool parsejson(rapidjson::Document& doc, string_view js) {
     return true;
 }
 
-bool parsejsonfile(rapidjson::Document& doc, string filename) {
+bool parsejsonfile(ConfigDocument& doc, string filename) {
     if (!fileexists(filename.c_str())) {
         return {};
     }
@@ -185,45 +205,60 @@ bool parsejsonfile(rapidjson::Document& doc, string filename) {
     return true;
 }
 
-// CONFIG
-
-Configuration::Config::Config() : document{rapidjson::Type::kObjectType} {}
-
-Configuration::Config config_object;
-bool readJson = false;
-
-// Loads the config for the given MOD_ID, if it doesn't exist, will leave it as an empty object.
-Configuration::Config Configuration::Config::Load() {
-    config_object = {};
-    if (!direxists(CONFIG_PATH)) {
-        mkdir(CONFIG_PATH, 0700);
-    }
+string getconfigpath() {
     string filename;
     filename = filename.append(CONFIG_PATH);
     filename = filename.append(MOD_ID);
     filename = filename.append(".json");
+    return filename;
+}
+
+// CONFIG
+
+ConfigDocument Configuration::config;
+bool readJson = false;
+
+// Loads the config for the given MOD_ID, if it doesn't exist, will leave it as an empty object.
+void Configuration::Load() {
+    if (readJson) {
+        return;
+    }
+    // document = {};
+    if (!direxists(CONFIG_PATH)) {
+        mkdir(CONFIG_PATH, 0700);
+    }
+    string filename = getconfigpath();
 
     if (!fileexists(filename.c_str())) {
         writefile(filename.c_str(), "{}");
     }
-    parsejsonfile(config_object.document, filename);
-    if (!config_object.document.IsObject()) {
-        config_object.document.SetObject();
+    if (!parsejsonfile(config, filename)) {
+        readJson = false;
+    }
+    if (!config.IsObject()) {
+        config.SetObject();
     }
     readJson = true;
 }
 
-void Configuration::Config::Write() {
+void Configuration::Reload() {
+    string filename = getconfigpath();
+
+    parsejsonfile(config, filename);
+    if (!config.IsObject()) {
+        config.SetObject();
+    }
+    readJson = true;
+}
+
+void Configuration::Write() {
     if (!direxists(CONFIG_PATH)) {
         mkdir(CONFIG_PATH, 0700);
     }
-    string filename;
-    filename = filename.append(CONFIG_PATH);
-    filename = filename.append(MOD_ID);
-    filename = filename.append(".json");
+    string filename = getconfigpath();
 
     StringBuffer buf;
     PrettyWriter<StringBuffer> writer(buf);
-    config_object.document.Accept(writer);
+    config.Accept(writer);
     writefile(filename.c_str(), buf.GetString());
 }

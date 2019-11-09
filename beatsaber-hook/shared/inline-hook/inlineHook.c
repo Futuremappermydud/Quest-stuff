@@ -6,7 +6,7 @@ website: ele7enxxh.com
 modified time: 2015-01-23
 created time: 2015-11-30
 */
-
+#ifndef __aarch64__
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -16,6 +16,7 @@ created time: 2015-11-30
 // #include <asm/ptrace.h>
 #include <sys/wait.h>
 #include <sys/ptrace.h>
+#include <unistd.h>
 
 #include "relocate.h"
 #include "inlineHook.h"
@@ -31,7 +32,7 @@ created time: 2015-11-30
 
 #define ACTION_ENABLE	0
 #define ACTION_DISABLE	1
-	
+#ifndef __aarch64__
 enum hook_status {
 	REGISTERED,
 	HOOKED,
@@ -422,3 +423,5 @@ void inlineHookAll()
 
 	unFreeze(pid);
 }
+#endif
+#endif

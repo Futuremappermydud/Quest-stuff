@@ -3,21 +3,22 @@
   "name": "Begonescores",
   "author": "Futuremappermydud",
   "description": [
-      "This innovative mod removes those annoying scores when you hiot a bloq!
-	  Special thank you to michaelzoller,rugtiviet and darknight!"
+      "This innovative mod removes those annoying scores when you hiot a bloq! Special thank you to michaelzoller,rugtiviet and darknight!"
   ],
   "category": "Gameplay",
   "gameVersion": "1.5.0",
   "version": "0.0.1",
   "platform": "Quest",
+  "coverImageFilename": "cover.png",
+  "icon": "cover.png",
   "components": [
     {
       "Type": "HookMod",
       "InstallAction": {
-        "InstallLibraryFile": "libXscore.so"
+        "InstallLibraryFile": "libxscore.so"
       },
       "UninstallAction": {
-        "RemoveLibraryFile": "libXscore.so"
+        "RemoveLibraryFile": "libxscore.so"
       }
     }
   ]
