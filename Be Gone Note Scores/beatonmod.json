@@ -1,25 +1,23 @@
 {
-  "id": "nonotescores",
-  "name": "Be Gone Scores™",
+  "id": "Xscore",
+  "name": "Begonescores",
   "author": "Futuremappermydud",
-  "coverImageFilename": "cover.png",
   "description": [
-    "This innovative hook mod removes that annoying text down below \/ when you hit a block!"],
+      "This innovative mod removes those annoying scores when you hiot a bloq!
+	  Special thank you to michaelzoller,rugtiviet and darknight!"
+  ],
   "category": "Gameplay",
-  "gameVersion": "1.4.3",
+  "gameVersion": "1.5.0",
   "version": "0.0.1",
-  "links": {
-    "project-home": "https://github.com/Futuremappermydud/Quest-stuff"
-  },
   "platform": "Quest",
   "components": [
     {
       "Type": "HookMod",
       "InstallAction": {
-        "InstallLibraryFile": "Xscore.so"
+        "InstallLibraryFile": "libXscore.so"
       },
       "UninstallAction": {
-        "RemoveLibraryFile": "Xscore.so"
+        "RemoveLibraryFile": "libXscore.so"
       }
     }
   ]
