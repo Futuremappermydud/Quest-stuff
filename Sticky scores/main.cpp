@@ -20,18 +20,18 @@
 using namespace std;
 
 MAKE_HOOK_OFFSETLESS(FlyingScoreEffect, void, Il2CppObject* self, Il2CppObject* noteCutInfo ,int multiplier , float duration, Il2CppObject* targetPos,  Il2CppObject* color) {
-    duration = 0.0f ;
+    duration = 9999999999999.9f ;
     return FlyingScoreEffect(self, noteCutInfo, multiplier, duration, targetPos, color);
 }
 void* libil2cpphandle;
 MAKE_HOOK_OFFSETLES(init_hook, void, const char* domain_name) {
     dlclose(libil2cpphandle);
     init_hook(domain_name);
-    log(DEBUG, "Installing Begonescores");
+    log(DEBUG, "Installing StickyScores");
     auto klass = il2cpp_utils::GetClassFromName("", "FlyingScoreEffect");
     auto method = il2cpp_utils::GetMethod(klass, "InitAndPresent", 5);
     INSTALL_HOOK_OFFSETLESS(FlyingObjectEffect, method);
-    log(DEBUG, "Successfully installed Begonescores!");
+    log(DEBUG, "Successfully installed StickyScores!");
 }
 
 // ...

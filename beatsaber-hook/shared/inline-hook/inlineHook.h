@@ -1,6 +1,6 @@
 #ifndef _INLINEHOOK_H
 #define _INLINEHOOK_H
-#ifndef __aarch64__
+
 #include <stdio.h>
 
 #ifdef __cplusplus
@@ -30,5 +30,4 @@ void inlineHookAll();
 }
 #endif
 	
-#endif
 #endif

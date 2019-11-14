@@ -16,11 +16,17 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-TARGET_ARCH_ABI := $(APP_ABI)
+TARGET_ARCH_ABI := armeabi-v7a
+
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := hook
+#LOCAL_SRC_FILES := $(LOCAL_PATH)/../obj/local/armeabi-v7a/libhook.a
+#LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../include
 
 include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
-LOCAL_CFLAGS    := -DMOD_ID='"Xscore"' -DVERSION='"0.0.1"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
-LOCAL_MODULE    := xscore
-LOCAL_SRC_FILES := ../beatsaber-hook/shared/utils/il2cpp-utils.cpp ../beatsaber-hook/shared/utils/utils.cpp ../beatsaber-hook/shared/utils/config-utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp 
+LOCAL_MODULE    := modloader
+LOCAL_SRC_FILES := main.c ../shared/utils/utils.c ../shared/inline-hook/inlineHook.c ../shared/inline-hook/relocate.c
+#LOCAL_STATIC_LIBRARIES := libhook
 include $(BUILD_SHARED_LIBRARY)

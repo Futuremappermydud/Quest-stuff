@@ -20,7 +20,7 @@ TARGET_ARCH_ABI := $(APP_ABI)
 
 include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
-LOCAL_CFLAGS    := -DMOD_ID='"Xscore"' -DVERSION='"0.0.1"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
+LOCAL_CFLAGS    := -DMOD_ID='"StickyScore"' -DVERSION='"0.0.1"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
 LOCAL_MODULE    := xscore
 LOCAL_SRC_FILES := ../beatsaber-hook/shared/utils/il2cpp-utils.cpp ../beatsaber-hook/shared/utils/utils.cpp ../beatsaber-hook/shared/utils/config-utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp 
 include $(BUILD_SHARED_LIBRARY)
