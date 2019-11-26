@@ -16,7 +16,7 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-TARGET_ARCH_ABI := armeabi-v7a
+TARGET_ARCH_ABI := $(APP_ABI)
 
 
 include $(CLEAR_VARS)
@@ -26,7 +26,8 @@ LOCAL_MODULE := hook
 
 include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
+LOCAL_CFLAGS    := -DMOD_ID='"Sample"' -DVERSION='"1.0.0"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
 LOCAL_MODULE    := sample
-LOCAL_SRC_FILES := main.c ../shared/utils/utils.c ../shared/inline-hook/inlineHook.c ../shared/inline-hook/relocate.c
+LOCAL_SRC_FILES := ../shared/utils/utils.cpp ../shared/utils/il2cpp-functions.cpp ../shared/utils/il2cpp-utils.cpp ../shared/utils/config-utils.cpp main.cpp ../shared/inline-hook/inlineHook.c ../shared/inline-hook/relocate.c ../shared/inline-hook/And64InlineHook.cpp
 #LOCAL_STATIC_LIBRARIES := libhook
 include $(BUILD_SHARED_LIBRARY)

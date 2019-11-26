@@ -3,6 +3,7 @@
 #include <jni.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include "utils.h"
 #include <android/log.h>
 #include <string.h>
@@ -72,44 +73,9 @@ long long getRealOffset(void* offset) // calculate dump.cs address + lib.so base
     if (location == 0)
     {
         //arm
-        location = baseAddr("/data/app/com.beatgames.beatsaber-1/lib/arm64/libil2cpp.so"); // replace the com.package.name with the package name of the app you are modding.
+        location = baseAddr(IL2CPP_SO_PATH); // replace the com.package.name with the package name of the app you are modding.
     }
     return location + (long long)offset;
-}
-
-long long FindPattern(long long dwAddress, long long dwLen, char* pattern) {
-
-	#define in_range(x, a, b) (x >= a && x <= b)
-	#define get_bits(x) (in_range((x & (~0x20)), 'A', 'F') ? ((x & (~0x20)) - 'A' + 0xA): (in_range(x, '0', '9') ? x - '0': 0))
-	#define get_byte(x) (get_bits(x[0]) << 4 | get_bits(x[1]))
-
-	long long match = 0;
-
-	const char* current = pattern;
-
-	for (long long pCur = dwAddress; pCur < dwAddress + dwLen; pCur++) {
-	
-		if (!*current)
-			return match;
-
-		if (*(char*)current == ('\?') || *(char *)pCur == get_byte(current)) {
-			if (!match)
-				match = pCur;
-
-			if (!current[2])
-				return match;
-
-			if (*(short*)current == ('\?') || *(char *)current != ('\?'))
-				current += 3;
-			else
-				current += 2;
-		}
-		else {
-			current = pattern;
-			match = 0;
-		}
-	}
-	return 0;
 }
 
 // BEAT SABER SPECIFIC
@@ -201,7 +167,7 @@ int writefile(const char* filename, const char* text) {
     }
     return WRITE_ERROR_COULD_NOT_MAKE_FILE;
 }
-/*
+
 void* loadfromasset(const char* assetFilePath, const char* assetName) {
     // TODO IMPLEMENT
     // Create C# string
@@ -210,7 +176,16 @@ void* loadfromasset(const char* assetFilePath, const char* assetName) {
     // auto asyncBundle = il2cpp_functions::runtime_invoke()
     return nullptr;
 }
-*/
+
+bool parsejson(ConfigDocument& doc, string_view js) {
+    char temp[js.length()];
+    memcpy(temp, js.data(), js.length());
+    
+    if (doc.ParseInsitu(temp).HasParseError()) {
+        return false;
+    }
+    return true;
+}
 
 string getconfigpath() {
     string filename;

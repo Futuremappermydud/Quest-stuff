@@ -16,11 +16,26 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-TARGET_ARCH_ABI := $(APP_ABI)
+TARGET_ARCH_ABI := arm64-v8a
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := hook
+
+#include $(CLEAR_VARS)
+#LOCAL_MODULE := testil2cpp
+#LOCAL_SRC_FILES := libil2cpp.so
+#LOCAL_EXPORT_C_INCLUDES := ../beatsaber-hook/shared/libil2cpp
+#include $(PREBUILT_SHARED_LIBRARY)
+
+#LOCAL_SRC_FILES := $(LOCAL_PATH)/../obj/local/armeabi-v7a/libhook.a
+#LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../include
+include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
-LOCAL_CFLAGS    := -DMOD_ID='"XPre"' -DVERSION='"0.0.1"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
+LOCAL_CFLAGS    := -DMOD_ID='"XPre"' -DVERSION='"0.0.1"'
 LOCAL_MODULE    := XPre
-LOCAL_SRC_FILES := ../beatsaber-hook/shared/utils/il2cpp-utils.cpp ../beatsaber-hook/shared/utils/utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp 
+LOCAL_CPPFLAGS := -std=c++2a 
+
+#LOCAL_SHARED_LIBRARIES := testil2cpp
+LOCAL_SRC_FILES := ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp ../beatsaber-hook/shared/utils/il2cpp-functions.cpp ../beatsaber-hook/shared/utils/il2cpp-utils.cpp ../beatsaber-hook/shared/utils/utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c
+#LOCAL_STATIC_LIBRARIES := libhook
 include $(BUILD_SHARED_LIBRARY)

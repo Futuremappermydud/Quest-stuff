@@ -345,9 +345,9 @@ namespace il2cpp_utils {
             return false;
         }
         if (instance) {
-            il2cpp_functions::field_get_value(instance, field, *out);
+            il2cpp_functions::field_get_value(instance, field, (void*)out);
         } else { // Fallback to perform a static field set
-            il2cpp_functions::field_static_get_value(field, *out);
+            il2cpp_functions::field_static_get_value(field, (void*)out);
         }
 		return true;
     }

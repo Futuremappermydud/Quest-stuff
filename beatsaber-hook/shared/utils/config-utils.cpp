@@ -20,13 +20,13 @@
 
 // CONFIG
 
-rapidjson::Document Configuration::config;
-
+ConfigDocument Configuration::config;
 bool readJson = false;
 
 using namespace rapidjson;
 
-bool parsejsonfile(rapidjson::Document& doc, std::string filename) {
+
+bool parsejsonfile(ConfigDocument& doc, std::string filename) {
     if (!fileexists(filename.c_str())) {
         return {};
     }
@@ -34,6 +34,7 @@ bool parsejsonfile(rapidjson::Document& doc, std::string filename) {
 
     std::ifstream is;
     is.open(filename.c_str());
+
     IStreamWrapper wrapper {is};
     
     if (doc.ParseStream(wrapper).HasParseError()) {
@@ -47,7 +48,7 @@ void Configuration::Load() {
     if (readJson) {
         return;
     }
-    config = {};
+    // document = {};
     if (!direxists(CONFIG_PATH)) {
         mkdir(CONFIG_PATH, 0700);
     }
@@ -56,11 +57,11 @@ void Configuration::Load() {
     if (!fileexists(filename.c_str())) {
         writefile(filename.c_str(), "{}");
     }
-    
     if (!parsejsonfile(config, filename)) {
         readJson = false;
     }
     if (!config.IsObject()) {
+        log(WARNING, "config %s was not an object - clearing to make it so!");
         config.SetObject();
     }
     readJson = true;
@@ -71,6 +72,7 @@ void Configuration::Reload() {
 
     parsejsonfile(config, filename);
     if (!config.IsObject()) {
+        log(WARNING, "config %s was not an object - clearing to make it so!");
         config.SetObject();
     }
     readJson = true;
@@ -80,10 +82,11 @@ void Configuration::Write() {
     if (!direxists(CONFIG_PATH)) {
         mkdir(CONFIG_PATH, 0700);
     }
+    std::string filename = getconfigpath();
     if (!config.IsObject()) {
+        log(ERROR, "Configuration::Write: the config for %s was not an object! This is the mod developer's fault!");
         config.SetObject();
     }
-    std::string filename = getconfigpath();
 
     StringBuffer buf;
     PrettyWriter<StringBuffer> writer(buf);

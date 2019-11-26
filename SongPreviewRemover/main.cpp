@@ -15,7 +15,7 @@
 
 #include "../beatsaber-hook/shared/inline-hook/inlineHook.h"
 #include "../beatsaber-hook/shared/utils/utils.h"
-#include "../beatsaber-hook/shared/utils/il2cpp-utils.cpp"
+#include "../beatsaber-hook/shared/utils/il2cpp-utils.hpp"
 
 using namespace std;
 
@@ -45,4 +45,4 @@ __attribute__((constructor)) void lib_main() {
     // optional, just gets the 2nd round of logging out of the way:
     il2cpp_utils::GetClassFromName("", "HealthWarningFlowCoordinator");
     INSTALL_HOOK_DIRECT(init_hook, il2cpp_functions::init);
-}
+};

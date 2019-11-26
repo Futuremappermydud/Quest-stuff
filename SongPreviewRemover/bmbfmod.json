@@ -1,0 +1,25 @@
+{
+  "id": "Xpre",
+  "name": "SongPreviewRemover",
+  "author": "Futuremappermydud",
+  "description": [
+      "This mod removes the menu song preview yay."
+  ],
+  "category": "Gameplay",
+  "gameVersion": "1.5.0",
+  "version": "0.0.1",
+  "platform": "Quest",
+  "coverImageFilename": "cover.png",
+  "icon": "cover.png",
+  "components": [
+    {
+      "Type": "HookMod",
+      "InstallAction": {
+        "InstallLibraryFile": "libXpre.so"
+      },
+      "UninstallAction": {
+        "RemoveLibraryFile": "libXpre.so"
+      }
+    }
+  ]
+}

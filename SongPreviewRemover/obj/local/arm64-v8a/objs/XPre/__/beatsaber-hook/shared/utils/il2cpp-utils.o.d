@@ -40,7 +40,7 @@
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\cctype \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\ctype.h \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\wctype.h \
-  ..\beatsaber-hook\shared\utils\il2cpp-utils.h \
+  ..\beatsaber-hook\shared\utils\il2cpp-utils.hpp \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\unordered_map \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__hash_table \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\cmath \
@@ -74,28 +74,21 @@
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__bit_reference \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\istream \
   ..\beatsaber-hook\shared\utils\typedefs.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-api-types.h \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-api-platforms.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config-api.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-runtime-metadata.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-blob.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-metadata.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-object-internals.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h \
-  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-tabledefs.h \
-  ..\beatsaber-hook\shared\utils\il2cpp-functions.h \
-  ..\beatsaber-hook\shared\utils\logging.h \
-  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream \
-  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\thread \
-  ..\beatsaber-hook\shared\utils\utils.h \
-  ..\beatsaber-hook\shared\utils\config-utils.h \
-  ..\beatsaber-hook\shared\utils\rapidjson-utils.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-class-internals.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-platforms.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-api-platforms.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config-api.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-runtime-metadata.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-blob.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-metadata.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-object-internals.h \
+  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-tabledefs.h \
+  ..\beatsaber-hook\shared\utils\il2cpp-functions.hpp \
+  ..\beatsaber-hook\shared\utils\utils-functions.h \
+  ..\beatsaber-hook\shared\utils\rapidjson-utils.hpp \
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\document.h \
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\reader.h \
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\allocators.h \
@@ -126,7 +119,8 @@
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\stringbuffer.h \
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\istreamwrapper.h \
   ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\ostreamwrapper.h \
-  ..\beatsaber-hook\shared\utils\utils-functions.h
+  ..\beatsaber-hook\shared\utils\logging.h \
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stdio.h:
 
@@ -208,7 +202,7 @@ C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\ctype.h:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\wctype.h:
 
-..\beatsaber-hook\shared\utils\il2cpp-utils.h:
+..\beatsaber-hook\shared\utils\il2cpp-utils.hpp:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\unordered_map:
 
@@ -276,49 +270,35 @@ C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\istream:
 
 ..\beatsaber-hook\shared\utils\typedefs.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-api-types.h:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-class-internals.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-platforms.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-api-platforms.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-api-platforms.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config-api.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config-api.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-runtime-metadata.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-blob.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-runtime-metadata.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-metadata.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-blob.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-object-internals.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-metadata.h:
+..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-tabledefs.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-object-internals.h:
+..\beatsaber-hook\shared\utils\il2cpp-functions.hpp:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h:
+..\beatsaber-hook\shared\utils\utils-functions.h:
 
-C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-tabledefs.h:
-
-..\beatsaber-hook\shared\utils\il2cpp-functions.h:
-
-..\beatsaber-hook\shared\utils\logging.h:
-
-C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream:
-
-C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\thread:
-
-..\beatsaber-hook\shared\utils\utils.h:
-
-..\beatsaber-hook\shared\utils\config-utils.h:
-
-..\beatsaber-hook\shared\utils\rapidjson-utils.h:
+..\beatsaber-hook\shared\utils\rapidjson-utils.hpp:
 
 ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\document.h:
 
@@ -380,4 +360,6 @@ C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\inttypes.h:
 
 ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\ostreamwrapper.h:
 
-..\beatsaber-hook\shared\utils\utils-functions.h:
+..\beatsaber-hook\shared\utils\logging.h:
+
+C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream:
