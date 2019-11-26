@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestHooker", "QuestHooker\QuestHooker.csproj", "{5931479E-CF4E-4D1B-8564-39D599C61FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallHelperInterop", "InstallerHelperInterop\InstallHelperInterop.csproj", "{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModCommon", "ModCommon\ModCommon.csproj", "{D5909CED-5007-40C5-BA47-25D922144A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModCommon.Android", "ModCommon.Android\ModCommon.Android.csproj", "{5BC898C3-1707-4A3E-90F3-A52A47AD2761}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Emulator Debug|Any CPU = Emulator Debug|Any CPU
+		Profiler|Any CPU = Profiler|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Emulator Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Emulator Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Emulator Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Profiler|Any CPU.ActiveCfg = Release|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Profiler|Any CPU.Build.0 = Release|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Profiler|Any CPU.Deploy.0 = Release|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5931479E-CF4E-4D1B-8564-39D599C61FB5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Emulator Debug|Any CPU.ActiveCfg = Emulator Debug|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Emulator Debug|Any CPU.Build.0 = Emulator Debug|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Profiler|Any CPU.ActiveCfg = Profiler|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Profiler|Any CPU.Build.0 = Profiler|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6066F57-0767-47DF-8B18-CA76E8E0CC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Emulator Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Emulator Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Profiler|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Profiler|Any CPU.Build.0 = Debug|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5909CED-5007-40C5-BA47-25D922144A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Emulator Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Emulator Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Profiler|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Profiler|Any CPU.Build.0 = Release|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC898C3-1707-4A3E-90F3-A52A47AD2761}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DE1AB64-E01A-4AA4-9BA8-6708A0CD645D}
+	EndGlobalSection
+EndGlobal

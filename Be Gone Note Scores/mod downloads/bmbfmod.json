@@ -1,0 +1,25 @@
+{
+  "id": "Xscore",
+  "name": "Begonescores",
+  "author": "Futuremappermydud, many others shown below↓",
+  "description": [
+      "This innovative mod removes those annoying scores when you hit a bloq! Special thanks to L_death for compiling the mod when i got tons of errors, Rugtveit for giving me lots of beatsaber-hook stuff,Michael Zoller for helping my smolbrain and giving almost HALF the code, and darknight for taking the time to sort out some errors!"
+  ],
+  "category": "Gameplay",
+  "gameVersion": "1.5.0",
+  "version": "0.0.1",
+  "platform": "Quest",
+  "coverImageFilename": "cover.png",
+  "icon": "cover.png",
+  "components": [
+    {
+      "Type": "HookMod",
+      "InstallAction": {
+        "InstallLibraryFile": "libXscore.so"
+      },
+      "UninstallAction": {
+        "RemoveLibraryFile": "libXscore.so"
+      }
+    }
+  ]
+}

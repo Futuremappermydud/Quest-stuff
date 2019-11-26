@@ -6,7 +6,7 @@ website: ele7enxxh.com
 modified time: 2016-10-17
 created time: 2015-01-17
 */
-
+#ifndef __aarch64__
 #include "relocate.h"
 
 #define ALIGN_PC(pc)	(pc & 0xFFFFFFFC)
@@ -236,7 +236,7 @@ static int relocateInstructionInThumb16(uint32_t pc, uint16_t instruction, uint1
 		}
 		else if (type == ADR_THUMB16) {
 			r = (instruction & 0x700) >> 8;
-			value = ALIGN_PC(pc) + (instruction & 0xFF) << 2;
+			value = (ALIGN_PC(pc) + (instruction & 0xFF)) << 2;
 		}
 		else {
 			r = (instruction & 0x700) >> 8;
@@ -607,10 +607,11 @@ static void relocateInstructionInArm(uint32_t target_addr, uint32_t *orig_instru
 
 void relocateInstruction(uint32_t target_addr, void *orig_instructions, int length, void *trampoline_instructions, int *orig_boundaries, int *trampoline_boundaries, int *count)
 {
-	if (target_addr & 1 == 1) {
+	if ((target_addr & 1) == 1) {
 		relocateInstructionInThumb(target_addr - 1, (uint16_t *) orig_instructions, length, (uint16_t *) trampoline_instructions, orig_boundaries, trampoline_boundaries, count);
 	}
 	else {
 		relocateInstructionInArm(target_addr, (uint32_t *) orig_instructions, length, (uint32_t *) trampoline_instructions, orig_boundaries, trampoline_boundaries, count);
 	}
 }
+#endif
