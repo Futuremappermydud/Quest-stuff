@@ -74,53 +74,75 @@
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__bit_reference \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\istream \
   ..\beatsaber-hook\shared\utils\typedefs.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-api-types.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-class-internals.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-platforms.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-api-platforms.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config-api.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-runtime-metadata.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-blob.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-metadata.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-object-internals.h \
-  ..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-tabledefs.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-api-platforms.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config-api.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-runtime-metadata.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-blob.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-metadata.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-object-internals.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-tabledefs.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\Il2CppHashMap.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\dense_hash_map.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\densehashtable.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\type_traits.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\KeyWrapper.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\HashUtils.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\StringUtils.h \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-string-types.h \
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\vector \
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer \
+  C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\StringView.h \
   ..\beatsaber-hook\shared\utils\il2cpp-functions.hpp \
   ..\beatsaber-hook\shared\utils\utils-functions.h \
-  ..\beatsaber-hook\shared\utils\rapidjson-utils.hpp \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\document.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\reader.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\allocators.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\rapidjson.h \
+  ..\beatsaber-hook\shared\utils\..\config\rapidjson-utils.hpp \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\document.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\reader.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\allocators.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\rapidjson.h \
   C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\inttypes.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\stream.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\encodings.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\encodedstream.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\memorystream.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\meta.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\rapidjson.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\stack.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\allocators.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\swap.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\strtod.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\ieee754.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\biginteger.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\diyfp.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\pow10.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\error\error.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\error\..\rapidjson.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\strfunc.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\stream.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\prettywriter.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\writer.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\dtoa.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\itoa.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\stringbuffer.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\istreamwrapper.h \
-  ..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\ostreamwrapper.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\stream.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\encodings.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\encodedstream.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\memorystream.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\meta.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\rapidjson.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\stack.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\allocators.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\swap.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\strtod.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\ieee754.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\biginteger.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\diyfp.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\pow10.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\error\error.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\error\..\rapidjson.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\strfunc.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\stream.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\prettywriter.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\writer.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\dtoa.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\itoa.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\stringbuffer.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\istreamwrapper.h \
+  ..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\ostreamwrapper.h \
   ..\beatsaber-hook\shared\utils\logging.h \
-  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream \
+  ..\beatsaber-hook\shared\utils\utils.h \
+  ..\beatsaber-hook\shared\utils\..\config\config-utils.hpp \
+  ..\beatsaber-hook\shared\utils\..\config\..\utils\utils-functions.h \
+  ..\beatsaber-hook\shared\utils\..\inline-hook\And64InlineHook.hpp \
+  ..\beatsaber-hook\shared\utils\alphanum.hpp \
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\map \
+  C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__tree
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stdio.h:
 
@@ -270,96 +292,140 @@ C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\istream:
 
 ..\beatsaber-hook\shared\utils\typedefs.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-api-types.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\stddef.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-class-internals.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-api-platforms.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-platforms.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\os\c-api\il2cpp-config-platforms.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\os\c-api\il2cpp-config-api-platforms.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config-api.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-config-api.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-runtime-metadata.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-api-types.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-blob.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-metadata.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-config.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-object-internals.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-runtime-metadata.h:
 
-..\beatsaber-hook\shared\utils\..\libil2cpp\il2cpp-tabledefs.h:
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-blob.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-metadata.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-object-internals.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-class-internals.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-tabledefs.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\Il2CppHashMap.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\dense_hash_map.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\densehashtable.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\..\external\google\sparsehash\type_traits.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\KeyWrapper.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\HashUtils.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\StringUtils.h:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\il2cpp-string-types.h:
+
+C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\vector:
+
+C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__split_buffer:
+
+C:\Program\ Files\Unity\Editor\Data\il2cpp\libil2cpp\utils\StringView.h:
 
 ..\beatsaber-hook\shared\utils\il2cpp-functions.hpp:
 
 ..\beatsaber-hook\shared\utils\utils-functions.h:
 
-..\beatsaber-hook\shared\utils\rapidjson-utils.hpp:
+..\beatsaber-hook\shared\utils\..\config\rapidjson-utils.hpp:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\document.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\document.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\reader.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\reader.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\allocators.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\allocators.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\rapidjson.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\rapidjson.h:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\inttypes.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\stream.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\stream.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\encodings.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\encodings.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\encodedstream.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\encodedstream.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\memorystream.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\memorystream.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\meta.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\meta.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\rapidjson.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\rapidjson.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\stack.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\stack.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\allocators.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\allocators.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\swap.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\swap.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\strtod.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\strtod.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\ieee754.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\ieee754.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\biginteger.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\biginteger.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\diyfp.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\diyfp.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\pow10.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\pow10.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\error\error.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\error\error.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\error\..\rapidjson.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\error\..\rapidjson.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\strfunc.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\strfunc.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\..\stream.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\..\stream.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\prettywriter.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\prettywriter.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\writer.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\writer.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\dtoa.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\dtoa.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\internal\itoa.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\internal\itoa.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\stringbuffer.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\stringbuffer.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\istreamwrapper.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\istreamwrapper.h:
 
-..\beatsaber-hook\shared\utils\..\..\rapidjson\include\rapidjson\ostreamwrapper.h:
+..\beatsaber-hook\shared\utils\..\config\..\..\rapidjson\include\rapidjson\ostreamwrapper.h:
 
 ..\beatsaber-hook\shared\utils\logging.h:
 
 C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\iostream:
+
+..\beatsaber-hook\shared\utils\utils.h:
+
+..\beatsaber-hook\shared\utils\..\config\config-utils.hpp:
+
+..\beatsaber-hook\shared\utils\..\config\..\utils\utils-functions.h:
+
+..\beatsaber-hook\shared\utils\..\inline-hook\And64InlineHook.hpp:
+
+..\beatsaber-hook\shared\utils\alphanum.hpp:
+
+C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\map:
+
+C:\android-ndk-r20b\build\\..\sources\cxx-stl\llvm-libc++\include\__tree:

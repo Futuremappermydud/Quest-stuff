@@ -591,11 +591,12 @@ namespace InteropServices
                     if (!Type::IsStruct(previousField->type))
                     {
                         size_t managedOffset = field->offset - previousField->offset;
-                        if (managedOffset != 0) // overlapping fields have a zero offset
+                        if (type->packingSize == 0)
+                            offset += managedOffset;
+                        else if (managedOffset != 0) // overlapping fields have a zero offset
                         {
                             offset += vm::Class::GetFieldMarshaledSize(previousField);
-                            int marshaledFieldSize = vm::Class::GetFieldMarshaledSize(field);
-                            offset = RoundUpToMultiple(offset, type->packingSize == 0 ? marshaledFieldSize : std::min((int)type->packingSize, marshaledFieldSize));
+                            offset = RoundUpToMultiple(offset, std::min((int)type->packingSize, vm::Class::GetFieldMarshaledSize(field)));
                         }
                     }
                     else

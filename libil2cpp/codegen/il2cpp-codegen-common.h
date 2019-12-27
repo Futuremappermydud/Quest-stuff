@@ -20,7 +20,7 @@
 #include "vm/StackTrace.h"
 #include "vm-utils/Debugger.h"
 #include "utils/StringUtils.h"
-#include "utils/LeaveTargetStack.h"
+#include "utils/StringView.h"
 #include "utils/Exception.h"
 #include "utils/Output.h"
 #include "utils/Runtime.h"
@@ -123,8 +123,12 @@ inline int64_t il2cpp_codegen_abs(int64_t value)
 }
 
 // Exception support macros
+#define IL2CPP_RESET_LEAVE(Offset) \
+    if(__leave_target == 0) \
+        __leave_target = Offset;
+
 #define IL2CPP_LEAVE(Offset, Target) \
-    __leave_targets.push(Offset); \
+    __leave_target = Offset; \
     goto Target;
 
 #define IL2CPP_END_FINALLY(Id) \
@@ -141,13 +145,13 @@ inline int64_t il2cpp_codegen_abs(int64_t value)
         }
 
 #define IL2CPP_JUMP_TBL(Offset, Target) \
-    if(!__leave_targets.empty() && __leave_targets.top() == Offset) { \
-        __leave_targets.pop(); \
+    if(__leave_target == Offset) { \
+        __leave_target = 0; \
         goto Target; \
         }
 
 #define IL2CPP_END_CLEANUP(Offset, Target) \
-    if(!__leave_targets.empty() && __leave_targets.top() == Offset) \
+    if(__leave_target == Offset) \
         goto Target;
 
 
@@ -356,20 +360,4 @@ public:
 inline bool il2cpp_codegen_object_reference_equals(const RuntimeObject *obj1, const RuntimeObject *obj2)
 {
     return obj1 == obj2;
-}
-
-inline bool il2cpp_codegen_platform_is_osx()
-{
-    return IL2CPP_TARGET_OSX != 0;
-}
-
-inline bool il2cpp_codegen_platform_is_freebsd()
-{
-    // we don't currently support FreeBSD
-    return false;
-}
-
-inline bool il2cpp_codegen_platform_disable_libc_pinvoke()
-{
-    return IL2CPP_PLATFORM_DISABLE_LIBC_PINVOKE;
 }

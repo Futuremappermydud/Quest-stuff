@@ -158,14 +158,20 @@ char* readfile(const char* filename) {
     return content;
 }
 
-int writefile(const char* filename, const char* text) {
+bool writefile(const char* filename, const char* text) {
     FILE* fp = fopen(filename, "w");
     if (fp) {
         fwrite(text, sizeof(char), strlen(text), fp);
         fclose(fp);
-        return 0;
+        return true;
     }
-    return WRITE_ERROR_COULD_NOT_MAKE_FILE;
+    return false;
+}
+
+bool deletefile(const char* filename) {
+    if (fileexists(filename))
+        return remove(filename) == 0;
+    return false;
 }
 
 void* loadfromasset(const char* assetFilePath, const char* assetName) {

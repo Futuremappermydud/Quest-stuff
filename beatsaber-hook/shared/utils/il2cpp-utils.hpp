@@ -50,7 +50,9 @@ namespace il2cpp_utils {
                 *__p = (value);    \
             } while (0)
     }
-
+    // Init all of the usable il2cpp API, if it has yet to be initialized
+    // Maximum length of characters of an exception message - 1
+    #define EXCEPTION_MESSAGE_SIZE 4096
     // Returns a legible string from an Il2CppException*
     std::string ExceptionToString(Il2CppException* exp);
 
@@ -145,7 +147,6 @@ namespace il2cpp_utils {
         };
     }
 
-    
     template<typename... TArgs>
     // Returns if a given MethodInfo's parameters match the Il2CppTypes provided as args
     bool ParameterMatch(const MethodInfo* method, TArgs* ...args) {
@@ -235,8 +236,15 @@ namespace il2cpp_utils {
     }
 
     // Returns the MethodInfo for the method on the given class with the given name and number of arguments
+    // TODO: HASH MAP KNOWN FUNCTIONS
     // Created by zoller27osu
     const MethodInfo* GetMethod(Il2CppClass* klass, std::string_view methodName, int argsCount);
+
+    // Returns the MethodInfo for the method on class found via namespace and name with the given name and number of arguments
+    const MethodInfo* GetMethod(std::string_view nameSpace, std::string_view className, std::string_view methodName, int argsCount);
+
+    // Returns the MethodInfo for the method on the given instance
+    const MethodInfo* GetMethod(Il2CppObject* instance, std::string_view methodName, int argsCount);
 
     template<class TOut, class... TArgs>
     // Runs a MethodInfo with the specified parameters and instance, with return type TOut
@@ -333,7 +341,30 @@ namespace il2cpp_utils {
     // Created by zoller27osu
     FieldInfo* FindField(Il2CppClass* klass, std::string_view fieldName);
 
-    template<typename TOut = Il2CppObject*>
+    // Gets an Il2cppObject* from the given object instance and FieldInfo
+    // instance can only be null for static fields
+    // Returns nullptr if it fails
+    Il2CppObject* GetFieldValue(Il2CppObject* instance, FieldInfo* field);
+
+    // Gets an Il2CppObject* from the given class and field name
+    // Returns nullptr if it fails
+    // Created by zoller27
+    Il2CppObject* GetFieldValue(Il2CppClass* klass, std::string_view fieldName);
+
+    // Gets an Il2CppObject* from the given object instance and field name
+    // Returns nullptr if it fails
+    // Created by darknight1050, modified by Sc2ad
+    Il2CppObject* GetFieldValue(Il2CppObject* instance, std::string_view fieldName);
+
+    // Wrapper around the non-template GetFieldValue's that casts the result for you
+    template<class TOut, class... TArgs>
+    TOut* GetFieldValue(TArgs... params) {
+        static_assert(sizeof...(TArgs) == 2);
+        static_assert(std::is_base_of<Il2CppObject, TOut>::value, "The return type of this function must inherit Il2CppObject! See GetFieldValueUnsafe for an alternative.");
+        return reinterpret_cast<TOut*>(GetFieldValue(params...));
+    }
+
+    template<typename TOut>
     // Gets a value from the given object instance, and FieldInfo, with return type TOut
     // Returns false if it fails
     // Assumes a static field if instance == nullptr
@@ -352,7 +383,7 @@ namespace il2cpp_utils {
 		return true;
     }
 
-    template<typename TOut = Il2CppObject*>
+    template<typename TOut>
     // Gets the value of the field with type TOut and the given name from the given class 
     // Returns false if it fails
     // Adapted by zoller27osu
@@ -367,7 +398,7 @@ namespace il2cpp_utils {
         return GetFieldValue(out, nullptr, field);
     }
 
-    template<typename TOut = Il2CppObject*>
+    template<typename TOut>
     // Gets a value from the given object instance and field name, with return type TOut
     // Returns false if it fails
     // Created by darknight1050, modified by Sc2ad and zoller27osu
@@ -387,46 +418,29 @@ namespace il2cpp_utils {
         return GetFieldValue(out, instance, field);
     }
 
-    // Gets the value of a field with type TOut, given an object instance and the FieldInfo
-    // Returns false if it fails
-    // Assumes a static field if instance == nullptr
-    // Created by zoller27osu
-    template<class TOut=Il2CppObject*>
-    TOut GetFieldValue(Il2CppObject* instance, FieldInfo* field) {
+    // An unsafe wrapper around the TOut GetFieldValues; il2cpp should unbox when appropriate
+    template<class TOut, class... TArgs>
+    TOut GetFieldValueUnsafe(TArgs... params) {
+        static_assert(sizeof...(TArgs) == 2);
         TOut out;
-        if (GetFieldValue(&out, instance, field)) return out;
-        return 0;
-    }
-    
-    // Gets the value of a given static field, given the field's class and name
-    // Created by zoller27osu
-    template<class TOut>
-    TOut GetFieldValue(Il2CppClass* klass, std::string_view fieldName) {
-        TOut out;
-        if (GetFieldValue(&out, klass, fieldName)) return out;
-        return 0;
-    }
-
-    // Gets the value of a given field, given an object instance and the field's name
-    // Created by zoller27osu
-    template<class TOut=Il2CppObject*>
-    TOut GetFieldValue(Il2CppObject* instance, std::string_view fieldName) {
-        TOut out;
-        if (GetFieldValue(&out, instance, fieldName)) return out;
-        return 0;
+        GetFieldValue(&out, params...);
+        return out;
     }
 
     // Sets the value of a given field, given an object instance and FieldInfo
+    // Unbox "value" before passing if it is an Il2CppObject but the field is a primitive or struct!
     // Returns false if it fails
     // Assumes static field if instance == nullptr
     bool SetFieldValue(Il2CppObject* instance, FieldInfo* field, void* value);
 
     // Sets the value of a given field, given an object instance and field name
+    // Unbox "value" before passing if it is an Il2CppObject but the field is a primitive or struct!
     // Returns false if it fails
     // Adapted by zoller27osu
     bool SetFieldValue(Il2CppClass* klass, std::string_view fieldName, void* value);
 
     // Sets the value of a given field, given an object instance and field name
+    // Unbox "value" before passing if it is an Il2CppObject but the field is a primitive or struct!
     // Returns false if it fails
     bool SetFieldValue(Il2CppObject* instance, std::string_view fieldName, void* value);
 
@@ -486,6 +500,50 @@ namespace il2cpp_utils {
     // Some parts provided by zoller27osu
     // Logs information about the given Il2CppClass* as log(DEBUG)
     void LogClass(const Il2CppClass* klass, bool logParents = true);
+
+    // Get function at 0x84fff0 (v1.5.0)
+    // This is the `MetadataCache::GetExportedTypeFromIndex` method which returns a `TypeDefinitionIndex`
+    #define MetadataCache_GetExportedTypeFromIndex (void*)0x84FFF0
+    
+    // Get function: at 0x84fba4 (v1.5.0)
+    // This is the `MetadataCache::GetTypeInfoFromTypeDefinitionIndex` method which returns an `Il2CppClass*`
+    #define MetadataCache_GetTypeInfoFromTypeDefinitionIndex (void*)0x84FBA4
+
+    // Get function: at 0x84ffbc (v1.5.0)
+    // This is the `MetaDataCache::GetTypeFromIndex` method which returns an `const Il2CppTypeDefinition*`
+    #define MetadataCache_GetTypeFromIndex (void*)0x84FFBC
+
+    // Get function: 0x84e5e8 at (v1.5.0)
+    // This is the `MetadataCache::GetStringFromIndex` method which returns a `const char*`
+    #define MetadataCache_GetStringFromIndex (void*)0x84E5E8
+
+    // Get function: 0x8500bc at (v1.5.0)
+    // This is the `MetadataCache::GetNestedTypeFromIndex` method which returns an `Il2CppClass*`
+    #define MetadataCache_GetNestedTypeFromIndex (void*)0x8500BC
+
+    // Get function: 0x8504bc at (v1.5.0)
+    // This is the `MetadataCache::GetIndexForTypeDefinition` method which returns a `TypeDefinitionIndex`
+    #define MetadataCache_GetIndexForTypeDefinition (void*)0x8504BC
+
+    // Logs all classes (from every namespace) that start with the given prefix
+    // WARNING: THIS FUNCTION IS VERY SLOW. ONLY USE THIS FUNCTION ONCE AND WITH A FAIRLY SPECIFIC PREFIX!
+    // THIS FUNCTION IS ALSO VERSION VOLATILE, SINCE IT USES A HARDCODED OFFSET!
+    void LogClasses(std::string_view classPrefix);
+
+    // Adds the given TypeDefinitionIndex to the class hash table of a given image
+    // Mainly used in LogClasses
+    // THIS FUNCTION IS VERSION VOLATILE, SINCE IT USES A HARDCODED OFFSET!
+    void AddTypeToNametoClassHashTable(const Il2CppImage* img, TypeDefinitionIndex index);
+
+    // Adds the given nested types of the namespaze, parentName, and klass to the hastable
+    // Mainly used in AddTypeToNametoClassHashTable
+    // THIS FUNCTION IS VERSION VOLATILE, SINCE IT USES A HARDCODED OFFSET!
+    void AddNestedTypesToNametoClassHashTable(Il2CppNameToTypeDefinitionIndexHashTable* hashTable, const char *namespaze, const std::string& parentName, Il2CppClass *klass);
+
+    // Adds the given nested types of typeDefinition to the class hash table of a given image
+    // Mainly used in AddTypeToNametoClassHashTable
+    // THIS FUNCTION IS VERSION VOLATILE, SINCE IT USES A HARDCODED OFFSET!
+    void AddNestedTypesToNametoClassHashTable(const Il2CppImage* img, const Il2CppTypeDefinition* typeDefinition);
 
     // Creates a cs string (allocates it) with the given string_view and returns it
     Il2CppString* createcsstr(std::string_view inp);

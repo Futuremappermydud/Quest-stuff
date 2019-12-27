@@ -9,16 +9,12 @@
 #include <unistd.h>
 
 enum LOG_VERBOSE_TYPE {
-    CRITICAL = 1,
-    ERROR = 2,
-    WARNING = 4,
-    INFO = 8,
-    DEBUG = 16
+    CRITICAL = ANDROID_LOG_FATAL,
+    ERROR = ANDROID_LOG_ERROR,
+    WARNING = ANDROID_LOG_WARN,
+    INFO = ANDROID_LOG_INFO,
+    DEBUG = ANDROID_LOG_DEBUG
 };
-
-#ifndef LOG_LEVEL
-#define LOG_LEVEL WARNING | ERROR | CRITICAL
-#endif
 
 #ifndef MOD_ID
 // This is too annoying, let's change it to default to some stupid stuff

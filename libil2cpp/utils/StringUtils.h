@@ -26,7 +26,7 @@
 #include <vector>
 #include <limits>
 #include <stdint.h>
-#include "il2cpp-config.h"
+#include "../il2cpp-config.h"
 #include "StringView.h"
 
 namespace il2cpp

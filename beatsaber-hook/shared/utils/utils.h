@@ -6,13 +6,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <dlfcn.h>
 #include "typedefs.h"
-#include "config-utils.hpp"
-#include "rapidjson-utils.hpp"
+#include "../config/config-utils.hpp"
 #include "il2cpp-utils.hpp"
 #include "utils-functions.h"
 #include "../inline-hook/And64InlineHook.hpp"
+#include <dlfcn.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -76,26 +75,6 @@ registerInlineHook((uint32_t)addr, (uint32_t)hook_ ## name, (uint32_t **)&name);
 inlineHook((uint32_t)addr); \
 
 #endif
-
-// SETTINGS
-// ParseError is thrown when failing to parse a JSON file
-typedef enum ParseError {
-    PARSE_ERROR_FILE_DOES_NOT_EXIST = -1
-} ParseError_t;
-
-// WriteError is thrown when failing to create a file
-typedef enum WriteError {
-    WRITE_ERROR_COULD_NOT_MAKE_FILE = -1
-} WriteError_t;
-
-// JSON Parse Errors
-typedef enum JsonParseError {
-    JSON_PARSE_ERROR = -1
-} JsonParseError_t;
-
-// CONFIG
-
-#define CONFIG_PATH "/sdcard/Android/data/com.beatgames.beatsaber/files/mod_cfgs/"
 
 #ifdef __cplusplus
 }

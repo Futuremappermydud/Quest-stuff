@@ -1,12 +1,12 @@
 {
   "id": "Xscore",
-  "name": "Begonescores",
-  "author": "Futuremappermydud, many others shown below↓",
+  "name": "Be Gone Scores",
+  "author": "Futuremappermydud",
   "description": [
-      "This innovative mod removes those annoying scores when you hit a bloq! Special thanks to L_death for compiling the mod when i got tons of errors, Rugtveit for giving me lots of beatsaber-hook stuff,Michael Zoller for helping my smolbrain and giving almost HALF the code, and darknight for taking the time to sort out some errors!"
+      "Removes the score effect"
   ],
   "category": "Gameplay",
-  "gameVersion": "1.5.0",
+  "gameVersion": "1.6.0",
   "version": "0.0.1",
   "platform": "Quest",
   "coverImageFilename": "cover.png",

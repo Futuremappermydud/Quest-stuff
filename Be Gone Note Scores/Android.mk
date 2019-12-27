@@ -31,11 +31,9 @@ LOCAL_MODULE := hook
 #LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../include
 include $(CLEAR_VARS)
 LOCAL_LDLIBS := -llog
-LOCAL_CFLAGS    := -DMOD_ID='"Xscore"' -DVERSION='"0.0.1"'
+LOCAL_CFLAGS    := -DMOD_ID='"Xscore"' -DVERSION='"0.0.1"' -I'C:\Program Files\Unity\Editor\Data\il2cpp\libil2cpp'
 LOCAL_MODULE    := Xscore
-LOCAL_CPPFLAGS := -std=c++2a 
+LOCAL_CPPFLAGS := -std=c++2a
 
-#LOCAL_SHARED_LIBRARIES := testil2cpp
-LOCAL_SRC_FILES := ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp ../beatsaber-hook/shared/utils/il2cpp-functions.cpp ../beatsaber-hook/shared/utils/il2cpp-utils.cpp ../beatsaber-hook/shared/utils/utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c
-#LOCAL_STATIC_LIBRARIES := libhook
+LOCAL_SRC_FILES := c ../beatsaber-hook/shared/utils/il2cpp-functions.cpp ../beatsaber-hook/shared/utils/utils.cpp  ../beatsaber-hook/shared/utils/il2cpp-utils.cpp main.cpp ../beatsaber-hook/shared/inline-hook/inlineHook.c ../beatsaber-hook/shared/inline-hook/relocate.c ../beatsaber-hook/shared/inline-hook/And64InlineHook.cpp
 include $(BUILD_SHARED_LIBRARY)

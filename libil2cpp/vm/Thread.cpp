@@ -484,12 +484,6 @@ namespace vm
     {
         AUTO_LOCK_THREADS();
         GCTrackedThreadVector::iterator it = std::find(s_AttachedThreads->begin(), s_AttachedThreads->end(), thread);
-
-#if IL2CPP_MONO_DEBUGGER
-        if (it == s_AttachedThreads->end() && thread->internal_thread && il2cpp::utils::Debugger::IsDebuggerThread(thread->internal_thread->handle))
-            return;
-#endif
-
         IL2CPP_ASSERT(it != s_AttachedThreads->end() && "Vm thread not found in list of attached threads.");
         s_AttachedThreads->erase(it);
         set_wbarrier_for_attached_threads();
@@ -694,13 +688,7 @@ namespace vm
                 }
                 catch (Il2CppExceptionWrapper& ex)
                 {
-                    // Only deal with the unhandled exception if the runtime is not
-                    // shutting down. Otherwise, the code to process the unhandled
-                    // exception might fail in unexpected ways, because it needs
-                    // the full runtime available. We've seen this cause crashes
-                    // that are difficult to reproduce locally.
-                    if (!il2cpp::vm::Runtime::IsShuttingDown())
-                        Runtime::UnhandledException(ex.ex);
+                    Runtime::UnhandledException(ex.ex);
                 }
             }
             catch (il2cpp::vm::Thread::NativeThreadAbortException)

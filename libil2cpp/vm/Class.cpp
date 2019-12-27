@@ -203,8 +203,7 @@ namespace vm
         }
         else if (klass->rank > 0)
         {
-            if (klass->implementedInterfaces == NULL)
-                ArrayMetadata::SetupArrayInterfaces(klass, lock);
+            ArrayMetadata::SetupArrayInterfaces(klass, lock);
         }
         else
         {
@@ -1123,7 +1122,7 @@ namespace vm
 
     void SetupNestedTypesLocked(Il2CppClass *klass, const FastAutoLock& lock)
     {
-        if (klass->generic_class || klass->nestedTypes)
+        if (klass->generic_class)
             return;
 
         if (klass->nested_type_count > 0)
@@ -1136,7 +1135,7 @@ namespace vm
 
     void Class::SetupNestedTypes(Il2CppClass *klass)
     {
-        if (klass->generic_class || klass->nestedTypes)
+        if (klass->generic_class)
             return;
 
         if (klass->nested_type_count)

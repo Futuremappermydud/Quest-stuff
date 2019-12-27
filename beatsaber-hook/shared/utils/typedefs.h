@@ -3,13 +3,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <dlfcn.h>
 #include <type_traits>
 #include <cassert>
-#include "../libil2cpp/il2cpp-api-types.h"
-#include "../libil2cpp/il2cpp-class-internals.h"
-#include "../libil2cpp/il2cpp-object-internals.h"
-#include "../libil2cpp/il2cpp-tabledefs.h"
+// For including il2cpp properly
+#ifdef _MSC_VER
+#undef _MSC_VER
+#endif
+#ifndef __GNUC__
+#define __GNUC__
+#endif
+
+#include "il2cpp-config.h"
+#include "il2cpp-api-types.h"
+#include "il2cpp-class-internals.h"
+#include "il2cpp-object-internals.h"
+#include "il2cpp-tabledefs.h"
+#include "utils/Il2CppHashMap.h"
+#include "utils/HashUtils.h"
+#include "utils/StringUtils.h"
+#include <dlfcn.h>
 
 #ifdef __cplusplus
 template<class T>
@@ -41,6 +53,30 @@ struct Array : public Il2CppObject
             return bounds->length;
         }
         return max_length;
+    }
+};
+
+struct NamespaceAndNamePairHash
+{
+    size_t operator()(const std::pair<const char*, const char*>& pair) const
+    {
+        return il2cpp::utils::HashUtils::Combine(il2cpp::utils::StringUtils::Hash(pair.first), il2cpp::utils::StringUtils::Hash(pair.second));
+    }
+};
+
+struct NamespaceAndNamePairEquals
+{
+    bool operator()(const std::pair<const char*, const char*>& p1, const std::pair<const char*, const char*>& p2) const
+    {
+        return !strcmp(p1.first, p2.first) && !strcmp(p1.second, p2.second);
+    }
+};
+
+struct Il2CppNameToTypeDefinitionIndexHashTable : public Il2CppHashMap<std::pair<const char*, const char*>, TypeDefinitionIndex, NamespaceAndNamePairHash, NamespaceAndNamePairEquals>
+{
+    typedef Il2CppHashMap<std::pair<const char*, const char*>, TypeDefinitionIndex, NamespaceAndNamePairHash, NamespaceAndNamePairEquals> Base;
+    Il2CppNameToTypeDefinitionIndexHashTable() : Base()
+    {
     }
 };
 
@@ -95,7 +131,7 @@ typedef struct MulticastDelegate : Delegate
     Array<Delegate*>* delegates;
 } MulticastDelegate;
 
-// BEAT SABER SPECIFIC
+// UNITY SPECIFIC
 
 // UnityEngine.Color
 typedef struct Color {

@@ -11,15 +11,6 @@ namespace il2cpp
 {
 namespace os
 {
-    // I feel dirty putting it here, but our abstraction here is really
-    // leaky already with FindHandle struct containing directoryPath and pattern
-    // If we ever refactor FindHandle to be less leaky, move this too.
-    enum FindHandleFlags
-    {
-        kNoFindHandleFlags = 0,
-        kUseBrokeredFileSystem = 1,
-    };
-
     class Directory
     {
     public:
@@ -32,7 +23,6 @@ namespace os
         struct FindHandle
         {
             void* osHandle;
-            FindHandleFlags handleFlags;
             Il2CppNativeString directoryPath;
             Il2CppNativeString pattern;
 

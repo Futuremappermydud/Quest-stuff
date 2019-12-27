@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include "typedefs.h"
 
+// A class which contains all available il2cpp functions
+// Created by zoller27osu
 class il2cpp_functions {
   public:
 	// note: the "inline" just make these definitions as well as declarations, so they don't have to be defined in the .cpp

@@ -15,13 +15,13 @@
 
 #include "../beatsaber-hook/shared/inline-hook/inlineHook.h"
 #include "../beatsaber-hook/shared/utils/utils.h"
-#include "../beatsaber-hook/shared/utils/il2cpp-utils.hpp"
 
 using namespace std;
 
-MAKE_HOOK_OFFSETLESS(FlyingScoreEffect, void, Il2CppObject* self, Il2CppObject* noteCutInfo, int multiplier, float duration, Il2CppObject* targetPos, Il2CppObject* color) {
+/* (InitAndPresent, void, Il2cppObject*  noteCutInfo, int multiplier, float duration, Vector3 targetPos, Quaternion rotation, Color color)*/
+MAKE_HOOK_OFFSETLESS(FlyingScoreEffect, void, Il2CppObject* self, Il2CppObject*  noteCutInfo, int multiplier, float duration, Vector3 targetPos, Quaternion rotation, Color color) {
     duration = 0.0f;
-    return FlyingScoreEffect(self, noteCutInfo, multiplier, duration, targetPos, color);
+    return FlyingScoreEffect(self, noteCutInfo, multiplier, duration, targetPos, rotation, color);
 };
 
 void* libil2cpphandle;
@@ -30,7 +30,7 @@ MAKE_HOOK_OFFSETLESS(init_hook, void, const char* domain_name) {
     init_hook(domain_name);
     log(DEBUG, "Installing Begonescores");
     auto klass = il2cpp_utils::GetClassFromName("", "FlyingScoreEffect");
-    auto method = il2cpp_utils::GetMethod(klass, "InitAndPresent", 5);
+    auto method = il2cpp_utils::GetMethod(klass, "InitAndPresent", 6);
     INSTALL_HOOK_OFFSETLESS(FlyingScoreEffect, method);
     log(DEBUG, "Successfully installed Begonescores!");
 };
