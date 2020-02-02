@@ -3,9 +3,9 @@
   "name": "Be Gone Scores",
   "author": "Futuremappermydud",
   "description": [
-      "Removes the score effect"
+      "Removes the score effect. Useful for new players so they arent worried about their first hits. Once some people work on the customui rewrite I will hopefully add some of some sort"
   ],
-  "category": "Gameplay",
+  "category": "Other",
   "gameVersion": "1.6.0",
   "version": "0.0.1",
   "platform": "Quest",
